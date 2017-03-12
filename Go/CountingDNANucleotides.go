@@ -1,24 +1,32 @@
 package main
 
 import (
-	"fmt"
+	"bufio"
+	"os"
 )
 
-func main() {
-	var dnaString string
-	t := [4]int{0, 0, 0, 0}
+func readFile(lineNumber int) string {
+	f, _ := os.Open("test.txt")
+	scanner := bufio.NewScanner(f)
+	var line string
 	i := 0
-	fmt.Scanln(&dnaString)
-	for ; i < len(dnaString); i++ {
-		if dnaString[i:i+1] == "A" {
-			t[0]++
-		} else if dnaString[i:i+1] == "C" {
-			t[1]++
-		} else if dnaString[i:i+1] == "G" {
-			t[2]++
-		} else if dnaString[i:i+1] == "T" {
-			t[3]++
+	for scanner.Scan() {
+		if i == lineNumber {
+			line = scanner.Text()
+			break
+		} else {
+			i++
+		}
+
+	}
+	return line
+}
+
+func main() {
+	dnaString := readFile(0)
+	for i := 0; i < len(dnaString); i++ {
+		if dnaString[i:i+1] == "T" {
+			dnaString[i] = 85
 		}
 	}
-	fmt.Println(t)
 }
