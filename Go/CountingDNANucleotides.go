@@ -9,7 +9,6 @@ func main() {
 	t := [4]int{0, 0, 0, 0}
 	i := 0
 	fmt.Scanln(&dnaString)
-	fmt.Println(dnaString)
 	for ; i < len(dnaString); i++ {
 		if dnaString[i:i+1] == "A" {
 			t[0]++
