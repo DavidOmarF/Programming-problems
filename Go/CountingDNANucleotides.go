@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 )
 
@@ -23,10 +24,19 @@ func readFile(lineNumber int) string {
 }
 
 func main() {
-	dnaString := readFile(0)
-	for i := 0; i < len(dnaString); i++ {
-		if dnaString[i:i+1] == "T" {
-			dnaString[i] = 85
+	dnaString := []byte(readFile(0))
+	t := [4]int{0, 0, 0, 0}
+	i := 0
+	for ; i < len(dnaString); i++ {
+		if dnaString[i] == 'A' {
+			t[0]++
+		} else if dnaString[i] == 'C' {
+			t[1]++
+		} else if dnaString[i] == 'G' {
+			t[2]++
+		} else if dnaString[i] == 'T' {
+			t[3]++
 		}
 	}
+	fmt.Println(t)
 }
