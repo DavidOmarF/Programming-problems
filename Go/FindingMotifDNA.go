@@ -30,22 +30,26 @@ func main() {
 		println("Error: t is bigger than s.")
 		return
 	}
-	var positions [1000]int
+	var pos [1000]int
 	k := 0
-	for i, j := 0, 0; i < len(dnaString); i++ {
+	for i, j := 0, 0; i < len(dnaString) && j < len(dnaString2); i++ {
 		if dnaString[i] == dnaString2[j] {
-			j++
-			if j == len(dnaString2) {
+			if j+1 == len(dnaString2) {
+				i = i - j
+				pos[k] = i + 1
 				j = 0
-				i = i - len(dnaString2) + 1
-				positions[k] = i + 1
 				k++
+			} else {
+				j++
 			}
 		} else {
-			j = 0
+			if j != 0 {
+				i -= j
+				j = 0
+			}
 		}
 	}
 	for i := 0; i < k; i++ {
-		fmt.Printf("%d ", positions[i])
+		fmt.Printf("%d ", pos[i])
 	}
 }
