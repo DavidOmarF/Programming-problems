@@ -24,10 +24,9 @@ func readFile(lineNumber int) string {
 }
 
 func main() {
-	dnaString := []byte(readFile(0))
-	t := [4]int{0, 0, 0, 0}
-	i := 0
-	for ; i < len(dnaString); i++ {
+	dnaString := []byte(readFile(0))			// Converts a string to an array of bytes and assigns
+	t := [4]int						// Each position of int array t corresponding to A, C, G, and T
+	for i := 0; i < len(dnaString); i++ {			
 		if dnaString[i] == 'A' {
 			t[0]++
 		} else if dnaString[i] == 'C' {
@@ -38,5 +37,5 @@ func main() {
 			t[3]++
 		}
 	}
-	fmt.Println(t)
+	fmt.Println(t)						// Prints all values on t
 }
