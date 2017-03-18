@@ -24,13 +24,15 @@ func readFile(lineNumber int) string {
 }
 
 func invertString(dnaString []byte) []byte {
-	var middle int
-	if len(dnaString)%2 == 0 {
-		middle = len(dnaString)/2 - 1
+	var middle int 							// The middle of the string will be needed to stop swaping
+									// values at that position. Otherwise, it will continue until 
+									// ending with the very same string before inverting.
+	if len(dnaString)%2 == 0 { 					// if the lenght of dnaString is even number, 
+		middle = len(dnaString)/2 - 1				// the middle is the lenght / 2 - 1
 	} else {
-		middle = (len(dnaString)+1)/2 - 1
+		middle = (len(dnaString)+1)/2 - 1			// otherwise, is (lenght + 1 ) / 2 - 1
 	}
-	for i := 0; i <= middle; i++ {
+	for i := 0; i <= middle; i++ {					
 		aux := dnaString[i]
 		dnaString[i] = dnaString[len(dnaString)-i-1]
 		dnaString[len(dnaString)-i-1] = aux
@@ -39,8 +41,8 @@ func invertString(dnaString []byte) []byte {
 }
 
 func main() {
-	dnaString := []byte(readFile(0))
-	for i := 0; i < len(dnaString); i++ {
+	dnaString := []byte(readFile(0)) // Converts a string to an array of bytes and assigns it to dnaString
+	for i := 0; i < len(dnaString); i++ {  
 		if dnaString[i] == 'A' {
 			dnaString[i] = 'T'
 		} else if dnaString[i] == 'C' {
@@ -51,5 +53,5 @@ func main() {
 			dnaString[i] = 'A'
 		}
 	}
-	fmt.Printf("%s\n", invertString(dnaString))
+	fmt.Printf("%s\n", invertString(dnaString)) // Prints dnaString inverted, a.k.a. The Complement.
 }
