@@ -26,11 +26,14 @@ func main() {
 	dnaString := []byte(readFile(0))
 	dnaString2 := []byte(readFile(1))
 	if len(dnaString) != len(dnaString2) {
+	// Gets sure that both strings are the same lenght
 		println("Error: s and t are not equal length")
 		return
 	}
 	mutations := 0
+	// Starts number of mutations in 0
 	for i := 0; i < len(dnaString); i++ {
+	// Counts mutations. Easy.
 		if dnaString[i] != dnaString2[i] {
 			mutations++
 		}
