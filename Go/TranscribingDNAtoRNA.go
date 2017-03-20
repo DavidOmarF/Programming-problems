@@ -24,11 +24,11 @@ func readFile(lineNumber int) string {
 }
 
 func main() {
-	dnaString := []byte(readFile(0))
-	for i := 0; i < len(dnaString); i++ {
+	dnaString := []byte(readFile(0))		// Converts a String into an Array of bytes
+	for i := 0; i < len(dnaString); i++ {		// Replaces every 'T' with 'U'
 		if dnaString[i] == 'T' {
 			dnaString[i] = 'U'
 		}
 	}
-	fmt.Printf("%s", dnaString)
+	fmt.Printf("%s", dnaString)			// Prints new string
 }
