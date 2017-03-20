@@ -1,7 +1,7 @@
 # Rosalind
-Rosalind is a website that has problems about bioinformatics. You can learn molecular biology while you solve them. You can read more about the project going to [the website](http://rosalind.info/about/)
+Rosalind is a website that has problems about bioinformatics. You can learn molecular biology while you solve them. You can read more about the project going to *[the website](http://rosalind.info/about/)*
 
-You can see the list of all the problems *[in here](http://rosalind.info/problems/list-view/)*. And my [Rosalind profile](http://rosalind.info/users/davidomarf/)
+You can see the list of all the problems *[in here](http://rosalind.info/problems/list-view/)*. And my *[Rosalind profile](http://rosalind.info/users/davidomarf/)*
 
 Next, are the problems i've solved so far, along with its URL and my solution here at github.
 
