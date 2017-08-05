@@ -7,16 +7,19 @@ Next, are the problems i've solved so far, along with its URL and my solution he
 
 - **Counting DNA Nucleotides**
   - *[Original problem](http://rosalind.info/problems/dna/)*
-  - *[My solution](Go/CountingDNANucleotides.go)*
+  - *[My solution (Go)](problems_list/CountingDNANucleotides.go)*
 - **Transcribing DNA into RNA**
   - *[Original problem](http://rosalind.info/problems/rna/)*
-  - *[My solution](Go/TranscribingDNAtoRNA.go)*
+  - *[My solution (Go)](problems_list/TranscribingDNAtoRNA.go)*
 - **Complementing a Strand of DNA**
   - *[Original problem](http://rosalind.info/problems/revc/)*
-  - *[My solution](Go/ComplementingDNAStrand.go)*
+  - *[My solution (Go)](problems_list/ComplementingDNAStrand.go)*
 - **Counting Point Mutations**
   - *[Original problem](http://rosalind.info/problems/hamm/)*
-  - *[My solution](Go/CountingPointMutations.go)*
+  - *[My solution (Go)](problems_list/CountingPointMutations.go)*
 - **Finding a Motif in DNA**
   - *[Original problem](http://rosalind.info/problems/subs/)*
-  - *[My solution](Go/FindingMotifDNA.go)*
+  - *[My solution (Go)](problems_list/FindingMotifDNA.go)*
+- **Finding a Motif in DNA**
+  - *[Original problem](http://rosalind.info/problems/gc/)*
+  - *[My solution (C)](problems_list/ComputingCGContent.c)*
