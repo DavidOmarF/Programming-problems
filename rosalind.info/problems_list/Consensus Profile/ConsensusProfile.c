@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MOST_STRINGS 10
+#define MOST_STRINGS 11
 
 typedef struct
 {
@@ -12,10 +12,11 @@ typedef struct
 
 void getDNAString(FILE *fp, char *s);
 void countNucleotides(DNAString *strings, int numStrings, int ith, int *nucleotides);
-
+char chooseNucleotide(int **matrix, int i);
 int main(void)
 {
     FILE *fpInput = fopen("rosalind_cons.txt", "r");
+    FILE *fpOutput = fopen("rosalind_cons_out.txt", "w");
 
     DNAString strings[MOST_STRINGS];
     int numStrings = 0;
@@ -39,15 +40,44 @@ int main(void)
     {
         countNucleotides(strings, numStrings, i, matrix[i]);
     }
-    
-    for(int i = 0; i < 4; i++){
-        for(int j = 0; j < dnaLength; j++){
-            printf("%d ", matrix[j][i]);
-        }
-        printf("\n");
-    }
 
+    char *consString = malloc(sizeof(char) * (dnaLength + 1));
+    consString[dnaLength] = '\0';
+
+    for (int i = 0; i < dnaLength; i++)
+    {
+        consString[i] = chooseNucleotide(matrix, i);
+    }
+    fputs(consString, fpOutput);
+    fprintf(fpOutput, "\n");
+    for(int i = 0; i < 4; i++){
+        if(i == 0) fprintf(fpOutput, "A: ");
+        if(i == 1) fprintf(fpOutput, "C: ");
+        if(i == 2) fprintf(fpOutput, "G: ");
+        if(i == 3) fprintf(fpOutput, "T: ");
+        for(int j = 0; j < dnaLength; j++){
+            fprintf(fpOutput, "%d ", matrix[j][i]);
+        }
+        fprintf(fpOutput, "\n");
+    }
     return 0;
+}
+
+char chooseNucleotide(int **matrix, int i){
+    int max = 0;
+    int pos = 0;
+    for(int j = 0; j < 4; j++)
+    {
+        if(matrix[i][j] > max){
+            max = matrix[i][j];
+            pos = j;
+        }
+    }
+    if(pos == 0) return 'A';
+    if(pos == 1) return 'C';
+    if(pos == 2) return 'G';
+    if(pos == 3) return 'T';
+    return 'E';
 }
 
 void countNucleotides(DNAString *strings, int numStrings, int ith, int *nucleotides)
