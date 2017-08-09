@@ -9,7 +9,7 @@ int main (void){
 
     // open input and output files
     FILE * fpInput = fopen("rosalind_fib.txt", "r");
-    FILE * fpOutput = fopen("rosalind_fib_answer.txt", "w");
+    FILE * fpOutput = fopen("rosalind_fib_out.txt", "w");
 
     // scan months <= 40, and litter <= 5
     int months, litter;
@@ -31,5 +31,5 @@ int main (void){
     // print final value
     fprintf(fpOutput, "%llu", sequence[months - 1]);
 
-    return;
+    return 0;
 }

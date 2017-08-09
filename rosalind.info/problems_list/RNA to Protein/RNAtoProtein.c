@@ -8,7 +8,7 @@ int main(void)
 {
     // open files
     FILE *fpInput = fopen("rosalind_prot.txt", "r");
-    FILE *fpOutput = fopen("rosalind_prot_answer.txt", "w");
+    FILE *fpOutput = fopen("rosalind_prot_out.txt", "w");
 
     char *string = (char *)malloc(10001 * sizeof(char));
     char *protein = (char *)malloc(3335 * sizeof(char));
