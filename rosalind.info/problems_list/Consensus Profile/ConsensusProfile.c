@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MOST_STRINGS 11
+#define MOST_STRINGS 10
 
 typedef struct
 {
@@ -21,7 +21,7 @@ int main(void)
     DNAString strings[MOST_STRINGS];
     int numStrings = 0;
 
-    for (;; numStrings++)
+    for (;numStrings < MOST_STRINGS; numStrings++)
     {
         getDNAString(fpInput, strings[numStrings].ID);
         getDNAString(fpInput, strings[numStrings].string);
