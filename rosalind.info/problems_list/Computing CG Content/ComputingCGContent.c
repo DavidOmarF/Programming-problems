@@ -3,7 +3,7 @@
 typedef struct
 {
     char ID[14];
-    float cgContent;
+    float string;
 } DNAString;
 
 void getID(FILE *fp, char *string);
@@ -39,15 +39,15 @@ void printDNAString(DNAString *DNAStrings, int DNAStrings_i, FILE *fp)
     float max = 0.0;
     for (int i = 0; i < DNAStrings_i; i++)
     {
-        if (DNAStrings[i].cgContent > max)
+        if (DNAStrings[i].string > max)
         {
-            max = DNAStrings[i].cgContent;
+            max = DNAStrings[i].string;
             max_i = i;
         }
     }
 
     // and prints it
-    fprintf(fp, "%s\n%f\n", DNAStrings[max_i].ID, DNAStrings[max_i].cgContent);
+    fprintf(fp, "%s\n%f\n", DNAStrings[max_i].ID, DNAStrings[max_i].string);
 }
 
 void getID(FILE *fp, char *string)
@@ -79,7 +79,7 @@ void scanStrings(FILE *fp, DNAString *DNAStrings, int *i)
             getID(fp, DNAStrings[DNAStrings_i].ID);
             // calculate CG content of the **previous** ID
             if (DNAStrings_i)
-                DNAStrings[DNAStrings_i - 1].cgContent = ((float)cgCount / total * 100);
+                DNAStrings[DNAStrings_i - 1].string = ((float)cgCount / total * 100);
             DNAStrings_i++;
             cgCount = 0;
             total = 0;
@@ -95,7 +95,7 @@ void scanStrings(FILE *fp, DNAString *DNAStrings, int *i)
         }
     }
     // calculate CG content of last ID
-    DNAStrings[DNAStrings_i - 1].cgContent = ((float)cgCount / total * 100);
+    DNAStrings[DNAStrings_i - 1].string = ((float)cgCount / total * 100);
 
     // updates the original variable sent
     *i = DNAStrings_i;

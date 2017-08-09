@@ -1,32 +1,48 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+
 #define MOST_STRINGS 10
 
-char *getDNAString(FILE *fp);
+typedef struct
+{
+    char ID[14];
+    char string[1001] ;
+} DNAString;
 
+void getDNAString(FILE *fp, char* s);
 
 int main(void)
-{
+{    
     FILE *fpInput = fopen("rosalind_cons.txt", "r");
-    char **DNAStrings = malloc(sizeof(char) * MOST_STRINGS);
-    for (int i = 0; i < MOST_STRINGS * 2; i++)
+
+    DNAString strings[MOST_STRINGS];
+    int numStrings = 0;
+
+    for (;; numStrings++)
     {
-        DNAStrings[i] = getDNAString(fpInput);
+        getDNAString(fpInput, strings[numStrings].ID);
+        getDNAString(fpInput, strings[numStrings].string);
+        if (strings[numStrings].ID[0] == '\0' || strings[numStrings].string[0] == '\0')
+            break;
     }
 
+    for (int i = 0; i < numStrings; i += 1)
+    {
+        puts(strings[i].ID);
+        puts(strings[i].string);
+    }
     return 0;
 }
 
-char *getDNAString(FILE *fp)
+void getDNAString(FILE *fp, char* s)
 {
-    char* string = malloc(sizeof(char) * 1001);
-    for(int i = 0; ;i++){
-        fscanf(fp, "%c", &string[i]);
-        if(string[i] == 10 || feof(fp)){
-            string[i] == '\0';
+    int i = 0;
+    do
+    {
+        fscanf(fp, "%c", &s[i]);
+        i++;
+        if (s[i - 1] == 10 || s[i - 1] == 13)
             break;
-        }
-    }
-    return string;
+    } while (!feof(fp));
+    s[i - 1] = '\0';
+    return;
 }
