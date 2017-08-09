@@ -7,13 +7,14 @@ typedef struct
 } DNAString;
 
 void getID(FILE *fp, char *string);
-void printDNAString(DNAString *DNAStrings, int DNAStrings_i);
+void printDNAString(DNAString *DNAStrings, int DNAStrings_i, FILE *fp);
 void scanStrings(FILE *fp, DNAString *DNAStrings, int *DNAStrings_i);
 
 int main(void)
 {
     // open file with DNA Strings in FASTA
-    FILE *fp = fopen("rosalind_gc.txt", "r");
+    FILE *fpInput = fopen("rosalind_gc.txt", "r");
+    FILE *fpOutput = fopen("rosalind_gc_out.txt", "w");
 
     // array of DNAStrings (10 max), and an index which will represent
     // the actual number of strings scanned
@@ -21,13 +22,17 @@ int main(void)
     int DNAStrings_i = 0;
 
     // scan strings and assign its values to the array
-    scanStrings(fp, DNAStrings, &DNAStrings_i);
+    scanStrings(fpInput, DNAStrings, &DNAStrings_i);
 
     // print the DNA string with the max CG content
-    printDNAString(DNAStrings, DNAStrings_i);
+    printDNAString(DNAStrings, DNAStrings_i, fpOutput);
+
+    // close files
+    fclose(fpInput);
+    fclose(fpOutput);
 }
 
-void printDNAString(DNAString *DNAStrings, int DNAStrings_i)
+void printDNAString(DNAString *DNAStrings, int DNAStrings_i, FILE *fp)
 {
     // selects the string with the maximum cg content
     int max_i = 0;
@@ -42,7 +47,7 @@ void printDNAString(DNAString *DNAStrings, int DNAStrings_i)
     }
 
     // and prints it
-    printf("%s\n%f\n", DNAStrings[max_i].ID, DNAStrings[max_i].cgContent);
+    fprintf(fp, "%s\n%f\n", DNAStrings[max_i].ID, DNAStrings[max_i].cgContent);
 }
 
 void getID(FILE *fp, char *string)

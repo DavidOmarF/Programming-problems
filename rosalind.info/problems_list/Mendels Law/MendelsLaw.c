@@ -3,7 +3,7 @@
 int main(void)
 {
     FILE *fpInput = fopen("rosalind_iprb.txt", "r");
-    FILE *fpOutput = fopen("rosalind_iprb_answer.txt", "w");
+    FILE *fpOutput = fopen("rosalind_iprb_out.txt", "w");
 
     // I declared these as floats to avoid casts in math step
     float homoDominant, homoRecessive, hetero;
