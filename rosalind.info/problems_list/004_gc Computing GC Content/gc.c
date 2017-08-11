@@ -1,3 +1,6 @@
+// For problem background, go to:
+// http://rosalind.info/problems/gc/
+
 #include <stdio.h>
 
 typedef struct

@@ -1,3 +1,6 @@
+// For problem background, go to:
+// http://rosalind.info/problems/dna/
+
 package main
 
 import (

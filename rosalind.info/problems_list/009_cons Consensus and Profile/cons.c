@@ -1,3 +1,6 @@
+// For problem background, go to:
+// http://rosalind.info/problems/cons/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
