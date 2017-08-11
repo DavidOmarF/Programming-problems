@@ -6,10 +6,10 @@ countNT xs = map (singleLetterCount xs) "ACGT"
 singleLetterCount :: String -> Char -> Int
 singleLetterCount xs x = length $ filter (==x) xs
 
-show' :: Show a => [a] -> String
-show' [] = ""
-show' (x:xs) = show x ++ " " ++ show' xs
+print' :: Show a => [a] -> String
+print' [] = ""
+print' (x:xs) = show x ++ " " ++ print' xs
 
 main = do  
     dnaString <- readFile "rosalind_dna.txt"
-    writeFile  "rosalind_dna_out.txt" $ show' $ countNT dnaString
+    writeFile  "rosalind_dna_out.txt" $ print' $ countNT dnaString
